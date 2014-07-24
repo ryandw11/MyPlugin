@@ -1,0 +1,54 @@
+package me.ryandw11;
+
+import org.bukkit.ChatColor;
+import org.bukkit.command.Command;
+import org.bukkit.command.CommandSender;
+import org.bukkit.entity.Player;
+import org.bukkit.plugin.java.JavaPlugin;
+
+
+public class EnderCraftMC extends JavaPlugin{
+	@Override
+	public void onEnable(){
+		getLogger().info("EnderCraftMC has been enabled!");
+		getLogger().info("EnderCraftMC is now on and active!");
+	}
+	@Override
+	public void onDisable(){
+		getLogger().info("EnderCraftMC has been disabled!");
+	}
+	public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args){
+		
+		if(cmd.getName().equalsIgnoreCase("hello") && sender instanceof Player){
+			
+			Player player = (Player) sender;
+			
+			player.sendMessage("Hello " + player.getName() + "!");
+			player.sendMessage("Thank you for playing on EnderCraftMC!");
+			return true;
+		}
+        if(cmd.getName().equalsIgnoreCase("ec") && sender instanceof Player){
+			
+			Player player = (Player) sender;
+			
+			player.sendMessage(ChatColor.LIGHT_PURPLE + "========EnderCraftMC Help========");
+			player.sendMessage(ChatColor.BLUE + "/hello " + ChatColor.GOLD +"Says hello to you!");
+			player.sendMessage(ChatColor.BLUE + "/ec " + ChatColor.GOLD +"Shows help page.");
+			player.sendMessage(ChatColor.BLUE + "/staff " + ChatColor.GOLD +"List the staff.");
+			player.sendMessage(ChatColor.LIGHT_PURPLE + "=================================");
+			return true;
+		}
+        if(cmd.getName().equalsIgnoreCase("staff") && sender instanceof Player){
+			
+			Player player = (Player) sender;
+			
+			player.sendMessage(ChatColor.GOLD + "=========EnderCraft staff==========");
+			player.sendMessage(ChatColor.GOLD + "Owners:" + ChatColor.LIGHT_PURPLE + " Endermyn " + ChatColor.GREEN + "Ryandw11");
+			player.sendMessage(ChatColor.GOLD + "Co.Owners:" + ChatColor.DARK_PURPLE + " NovaGirl.");
+			player.sendMessage(ChatColor.GOLD + "More Staff members coming soon! Do " + ChatColor.RED + "/warp staff " + ChatColor.GOLD + "to see all the staff members!");
+			return true;
+		}
+		
+		return false;
+	}
+}
